@@ -1,0 +1,20 @@
+version: 2.1
+commands:
+  foo:
+    parameters:
+      bar:
+        type: string
+    steps:
+      - echo "<< parameters.bar >>"
+
+jobs:
+  build:
+    docker:
+      - image: ubuntu:latest
+    steps:
+      - foo:
+          bar: meow
+workflows:
+  workflow:
+    jobs:
+      - build
